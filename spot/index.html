@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Spotting Location - Spotter</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="" id="og-url">
+    <meta property="og:title" content="" id="og-title">
+    <meta property="og:description" content="" id="og-description">
+    <meta property="og:image" content="https://spotter.app/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="" id="twitter-url">
+    <meta property="twitter:title" content="" id="twitter-title">
+    <meta property="twitter:description" content="" id="twitter-description">
+    <meta property="twitter:image" content="https://spotter.app/og-image.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2942 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #d4af37;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        .info-value {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: #0a1628;
+            padding: 16px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .secondary-link {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .secondary-link:hover {
+            color: #d4af37;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            color: #d4af37;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 4px;
+        }
+
+        .badges {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">📍</div>
+        <h1 id="spot-name">Spotting Location</h1>
+        <div class="subtitle" id="spot-airport"></div>
+
+        <div class="info-card" id="spot-info" style="display: none;">
+            <div class="description" id="spot-description"></div>
+
+            <div class="badges" id="spot-runways"></div>
+
+            <div class="info-row">
+                <span class="info-label">Lighting</span>
+                <span class="info-value" id="spot-lighting">-</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Distance from Airport</span>
+                <span class="info-value" id="spot-distance">-</span>
+            </div>
+        </div>
+
+        <a href="#" class="cta-button" id="open-app-button">Open in Spotter</a>
+        <br>
+        <a href="https://spotter.app" class="secondary-link">Learn more about Spotter</a>
+    </div>
+
+    <script>
+        // Extract spot ID from URL path
+        const pathParts = window.location.pathname.split('/').filter(p => p);
+        const spotId = pathParts[1] || 'unknown';
+
+        // Update page with spot ID
+        document.getElementById('page-title').textContent = `Spotting Location - Spotter`;
+
+        // Set up deep link
+        const deepLink = `https://spotter.app/spot/${spotId}`;
+        document.getElementById('open-app-button').href = deepLink;
+
+        // Update meta tags
+        const title = `Spotting Location - Spotter`;
+        const description = `View this spotting location's details, lighting conditions, best runways, and recent sightings in Spotter.`;
+
+        document.getElementById('og-url').setAttribute('content', window.location.href);
+        document.getElementById('og-title').setAttribute('content', title);
+        document.getElementById('og-description').setAttribute('content', description);
+        document.getElementById('twitter-url').setAttribute('content', window.location.href);
+        document.getElementById('twitter-title').setAttribute('content', title);
+        document.getElementById('twitter-description').setAttribute('content', description);
+
+        // Fetch spot data from Firebase (optional - requires CORS setup)
+        async function loadSpotData() {
+            try {
+                // You can add Firebase API call here to fetch real spot data
+                // For now, just show placeholder
+                document.getElementById('spot-name').textContent = 'Spotting Location';
+                document.getElementById('spot-info').style.display = 'block';
+            } catch (error) {
+                console.error('Error loading spot data:', error);
+            }
+        }
+
+        loadSpotData();
+
+        // Auto-redirect to app if on iOS
+        if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+            setTimeout(() => {
+                window.location.href = deepLink;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
