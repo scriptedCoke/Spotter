@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Airport - Spotter</title>
+    <title>Spotter - Aircraft Spotting Community</title>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="" id="og-url">
-    <meta property="og:title" content="" id="og-title">
-    <meta property="og:description" content="" id="og-description">
+    <meta property="og:url" content="https://spotter.app/">
+    <meta property="og:title" content="Spotter - Aircraft Spotting Community">
+    <meta property="og:description" content="Log aircraft sightings, discover spotting locations, and connect with aviation enthusiasts worldwide.">
     <meta property="og:image" content="https://spotter.app/og-image.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="" id="twitter-url">
-    <meta property="twitter:title" content="" id="twitter-title">
-    <meta property="twitter:description" content="" id="twitter-description">
+    <meta property="twitter:url" content="https://spotter.app/">
+    <meta property="twitter:title" content="Spotter - Aircraft Spotting Community">
+    <meta property="twitter:description" content="Log aircraft sightings, discover spotting locations, and connect with aviation enthusiasts worldwide.">
     <meta property="twitter:image" content="https://spotter.app/og-image.png">
 
     <style>
@@ -42,60 +42,33 @@
             text-align: center;
         }
 
-        .icon {
-            width: 100px;
-            height: 100px;
+        .logo {
+            width: 120px;
+            height: 120px;
             margin: 0 auto 30px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
+            border-radius: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 50px;
+            font-size: 60px;
         }
 
         h1 {
-            font-size: 42px;
+            font-size: 48px;
             font-weight: 700;
-            margin-bottom: 10px;
-            color: #d4af37;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .subtitle {
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 30px;
-        }
-
-        .info-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
-            margin-bottom: 30px;
-            text-align: left;
-        }
-
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .info-row:last-child {
-            border-bottom: none;
-        }
-
-        .info-label {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 14px;
-        }
-
-        .info-value {
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 16px;
+        p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            line-height: 1.6;
         }
 
         .cta-button {
@@ -109,7 +82,6 @@
             font-size: 18px;
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
-            margin-bottom: 20px;
         }
 
         .cta-button:hover {
@@ -117,93 +89,58 @@
             box-shadow: 0 6px 30px rgba(212, 175, 55, 0.4);
         }
 
-        .secondary-link {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            font-size: 14px;
+        .features {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
         }
 
-        .secondary-link:hover {
-            color: #d4af37;
+        .feature {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
         }
 
-        .loading {
-            color: rgba(255, 255, 255, 0.6);
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .feature-title {
             font-size: 16px;
+            font-weight: 600;
+            color: #d4af37;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="icon">🛫</div>
-        <h1 id="airport-name">Loading...</h1>
-        <div class="subtitle" id="airport-icao"></div>
+        <div class="logo">✈️</div>
+        <h1>Spotter</h1>
+        <p>Log aircraft sightings, discover the best spotting locations, track weather conditions, and connect with aviation enthusiasts worldwide.</p>
 
-        <div class="info-card" id="airport-info" style="display: none;">
-            <div class="info-row">
-                <span class="info-label">Location</span>
-                <span class="info-value" id="airport-location">-</span>
+        <a href="https://apps.apple.com/app/spotter" class="cta-button">Download on the App Store</a>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📸</div>
+                <div class="feature-title">Log Sightings</div>
             </div>
-            <div class="info-row">
-                <span class="info-label">Elevation</span>
-                <span class="info-value" id="airport-elevation">-</span>
+            <div class="feature">
+                <div class="feature-icon">📍</div>
+                <div class="feature-title">Find Spots</div>
             </div>
-            <div class="info-row">
-                <span class="info-label">Type</span>
-                <span class="info-value" id="airport-type">-</span>
+            <div class="feature">
+                <div class="feature-icon">🌤️</div>
+                <div class="feature-title">Live Weather</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🗺️</div>
+                <div class="feature-title">Interactive Map</div>
             </div>
         </div>
-
-        <a href="#" class="cta-button" id="open-app-button">Open in Spotter</a>
-        <br>
-        <a href="https://spotter.app" class="secondary-link">Learn more about Spotter</a>
     </div>
-
-    <script>
-        // Extract ICAO from URL path
-        const pathParts = window.location.pathname.split('/').filter(p => p);
-        const icao = pathParts[1] || 'UNKNOWN';
-
-        // Update page with ICAO
-        document.getElementById('airport-icao').textContent = icao;
-        document.getElementById('page-title').textContent = `${icao} - Spotter`;
-
-        // Set up deep link
-        const deepLink = `https://spotter.app/airport/${icao}`;
-        document.getElementById('open-app-button').href = deepLink;
-
-        // Update meta tags
-        const title = `${icao} Airport - Spotter`;
-        const description = `View ${icao} airport details, weather, active runways, and spotting locations in Spotter.`;
-
-        document.getElementById('og-url').setAttribute('content', window.location.href);
-        document.getElementById('og-title').setAttribute('content', title);
-        document.getElementById('og-description').setAttribute('content', description);
-        document.getElementById('twitter-url').setAttribute('content', window.location.href);
-        document.getElementById('twitter-title').setAttribute('content', title);
-        document.getElementById('twitter-description').setAttribute('content', description);
-
-        // Fetch airport data from Firebase (optional - requires CORS setup)
-        async function loadAirportData() {
-            try {
-                // You can add Firebase API call here to fetch real airport data
-                // For now, just show the ICAO
-                document.getElementById('airport-name').textContent = icao;
-                document.getElementById('airport-info').style.display = 'block';
-            } catch (error) {
-                console.error('Error loading airport data:', error);
-                document.getElementById('airport-name').textContent = icao;
-            }
-        }
-
-        loadAirportData();
-
-        // Auto-redirect to app if on iOS
-        if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
-            setTimeout(() => {
-                window.location.href = deepLink;
-            }, 1000);
-        }
-    </script>
 </body>
 </html>
