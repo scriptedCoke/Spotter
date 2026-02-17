@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/airport/:icao", "destination": "/airport/index.html" },
+    { "source": "/spot/:id", "destination": "/spot/index.html" }
+  ]
+}
