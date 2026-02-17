@@ -3,7 +3,7 @@
     "apps": [],
     "details": [
       {
-        "appID": "TEAMID.com.yourcompany.Spotter",
+        "appID": "com.zimogu.Spotter",
         "paths": [
           "/airport/*",
           "/spot/*"
